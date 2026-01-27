@@ -1,137 +1,322 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>ZenithCAD - 3D CAD Software</title>
+    <title>ZenithCAD - Professional CAD. Zero Bloat.</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
-            background: #1a1a2e;
-            color: #eee;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
+            background: #0a0a0a;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
+        
+        .scanline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 255, 0, 0.03),
+                rgba(0, 255, 0, 0.03) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            z-index: 999;
+        }
+        
         .container {
-            max-width: 900px;
+            max-width: 800px;
             margin: 0 auto;
-        }
-        h1 {
-            color: #4a9eff;
-            text-align: center;
-        }
-        h2 {
-            color: #4a9eff;
-            margin-top: 0;
-        }
-        .logo {
-            display: block;
-            margin: 0 auto;
-            width: 120px;
-        }
-        .tagline {
-            text-align: center;
-            color: #888;
-            margin-bottom: 40px;
-        }
-        .download-btn {
-            display: block;
-            width: 250px;
-            margin: 30px auto;
-            padding: 15px 30px;
-            background: #4a9eff;
-            color: white;
-            text-decoration: none;
-            text-align: center;
-            font-size: 18px;
-            border-radius: 5px;
-        }
-        .download-btn:hover {
-            background: #3a8eef;
-        }
-        .section {
-            background: #252540;
             padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
         }
-        .section ul {
-            columns: 2;
-        }
-        .size {
+        
+        .header {
             text-align: center;
-            color: #4a4;
-            font-size: 14px;
+            padding: 40px 0;
+            border-bottom: 2px solid #00ff00;
+            margin-bottom: 30px;
         }
-        .screenshots {
+        
+        .logo {
+            width: 80px;
+            filter: brightness(0) invert(1) sepia(1) saturate(10000%) hue-rotate(90deg);
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 48px;
+            text-shadow: 0 0 10px #00ff00;
+            letter-spacing: 4px;
+            animation: flicker 3s infinite;
+        }
+        
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.95; }
+        }
+        
+        .tagline {
+            color: #00aa00;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        
+        .version {
+            display: inline-block;
+            background: #001100;
+            border: 1px solid #00ff00;
+            padding: 5px 15px;
+            margin-top: 15px;
+            font-size: 12px;
+        }
+        
+        .download {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #001100;
+            border: 2px solid #00ff00;
+            color: #00ff00;
+            padding: 15px 40px;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 10px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn:hover {
+            background: #00ff00;
+            color: #0a0a0a;
+            box-shadow: 0 0 20px #00ff00;
+        }
+        
+        .btn:before {
+            content: '> ';
+        }
+        
+        .section {
+            border: 1px solid #00ff00;
+            padding: 20px;
+            margin: 20px 0;
+            background: rgba(0, 255, 0, 0.02);
+        }
+        
+        .section h2 {
+            color: #00ff00;
+            font-size: 20px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        
+        .section h2:before {
+            content: '# ';
+            color: #00aa00;
+        }
+        
+        ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+        
+        ul li:before {
+            content: '→ ';
+            color: #00aa00;
+        }
+        
+        ul li {
+            margin: 8px 0;
+            color: #00cc00;
+        }
+        
+        .grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
             margin: 15px 0;
         }
-        .screenshots img {
-            width: 100%;
-            border-radius: 8px;
-            border: 1px solid #333;
+        
+        .media {
+            border: 1px solid #00ff00;
+            overflow: hidden;
             cursor: pointer;
-            transition: transform 0.2s;
+            transition: all 0.3s;
         }
-        .screenshots img:hover {
+        
+        .media:hover {
+            box-shadow: 0 0 20px #00ff00;
             transform: scale(1.02);
         }
-        .video-container {
-            margin: 15px 0;
-        }
-        .video-container video {
+        
+        .media img, .media video {
             width: 100%;
-            border-radius: 8px;
-            border: 1px solid #333;
+            display: block;
+            filter: brightness(0.9) contrast(1.1);
         }
-        footer {
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
             text-align: center;
-            margin-top: 50px;
-            color: #666;
-            font-size: 12px;
         }
-        footer a {
-            color: #666;
+        
+        .stat {
+            border: 1px solid #00ff00;
+            padding: 15px;
+            flex: 1;
             margin: 0 10px;
         }
+        
+        .stat-value {
+            font-size: 32px;
+            color: #00ff00;
+            text-shadow: 0 0 10px #00ff00;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #00aa00;
+            margin-top: 5px;
+        }
+        
+        .terminal {
+            background: #000;
+            border: 1px solid #00ff00;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 13px;
+        }
+        
+        .terminal-line {
+            margin: 5px 0;
+        }
+        
+        .terminal-prompt {
+            color: #00aa00;
+        }
+        
+        .terminal-output {
+            color: #00ff00;
+        }
+        
+        footer {
+            text-align: center;
+            margin: 50px 0 20px;
+            padding-top: 20px;
+            border-top: 1px solid #00ff00;
+            color: #00aa00;
+            font-size: 12px;
+        }
+        
+        footer a {
+            color: #00ff00;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-shadow: 0 0 5px #00ff00;
+        }
+        
         @media (max-width: 600px) {
-            .screenshots { grid-template-columns: 1fr; }
-            .section ul { columns: 1; }
+            .grid { grid-template-columns: 1fr; }
+            .stats { flex-direction: column; }
+            .stat { margin: 10px 0; }
+            h1 { font-size: 32px; }
         }
     </style>
 </head>
 <body>
+    <div class="scanline"></div>
+    
     <div class="container">
-        <img src="icon.png" class="logo" alt="ZenithCAD">
-        <h1>ZenithCAD</h1>
-        <p class="tagline">Lightweight 3D CAD & Animation Software</p>
+        <div class="header">
+            <img src="icon.png" class="logo" alt="ZenithCAD">
+            <h1>ZENITHCAD</h1>
+            <p class="tagline">PROFESSIONAL CAD. ZERO BLOAT.</p>
+            <span class="version">v1.4.0</span>
+        </div>
         
-        <a href="ZenithCAD_Setup_1.1.0.exe" class="download-btn">Download v1.1.0</a>
-        <a href="https://github.com/DDHG-ctrl/ZenithLauncher/releases/download/v1.0.0/Zenith.Launcher.Setup.1.0.0.exe" class="download-btn" style="background: #764ba2;">Download Launcher</a>
-        <p class="size">CAD: 3MB | Launcher: 195MB - Windows 10/11</p>
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-value">FAST</div>
+                <div class="stat-label">PERFORMANCE</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">~100MB</div>
+                <div class="stat-label">DOWNLOAD SIZE</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">0</div>
+                <div class="stat-label">BLOAT</div>
+            </div>
+        </div>
         
-        <div class="section" style="background: #2a3a50; border: 1px solid #4a9eff;">
-            <h2>What's New in 1.1.0</h2>
-            <ul style="columns: 1;">
-                <li>Blender-style extrusion system rewrite</li>
-                <li>Bone gizmo in Animation Editor pose mode</li>
-                <li>Full Undo/Redo support (Ctrl+Z / Ctrl+Y)</li>
-                <li>Improved mesh editing operations</li>
-            </ul>
+        <div class="download">
+            <a href="ZenithCad-1.4.0-Setup.exe" class="btn">DOWNLOAD v1.4.0</a>
         </div>
         
         <div class="section">
-            <h2>Screenshots</h2>
-            <div class="screenshots">
-                <img src="screenshot.png" alt="ZenithCAD Editor" onclick="window.open(this.src)">
-                <img src="Screenshot1.png" alt="ZenithCAD Animation" onclick="window.open(this.src)">
+            <h2>What's New</h2>
+            <ul>
+                <li>In-app Lua scripting engine (NLua)</li>
+                <li>Script editor with syntax highlighting</li>
+                <li>Procedural generation API</li>
+                <li>Mesh manipulation from scripts</li>
+                <li>Animation control via Lua</li>
+                <li>Example automation scripts included</li>
+            </ul>
+        </div>
+        
+        <div class="terminal">
+            <div class="terminal-line">
+                <span class="terminal-prompt">zenith@cad:~$</span>
+                <span class="terminal-output"> lua script.lua</span>
+            </div>
+            <div class="terminal-line">
+                <span class="terminal-output">-- Creating procedural city...</span>
+            </div>
+            <div class="terminal-line">
+                <span class="terminal-output">for x = 0, 9 do</span>
+            </div>
+            <div class="terminal-line">
+                <span class="terminal-output">  api:CreateCube(x * 2, 0, 0, 1.0)</span>
+            </div>
+            <div class="terminal-line">
+                <span class="terminal-output">end</span>
+            </div>
+            <div class="terminal-line">
+                <span class="terminal-output">[Script] Created 10 cubes</span>
             </div>
         </div>
         
         <div class="section">
-            <h2>Animation Preview</h2>
-            <div class="video-container">
+            <h2>Screenshots</h2>
+            <div class="grid">
+                <div class="media" onclick="window.open('screenshot.png')">
+                    <img src="screenshot.png" alt="Editor">
+                </div>
+                <div class="media" onclick="window.open('Screenshot1.png')">
+                    <img src="Screenshot1.png" alt="Animation">
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Animation System</h2>
+            <div class="media">
                 <video controls loop muted autoplay>
                     <source src="animated.mp4" type="video/mp4">
                 </video>
@@ -139,8 +324,8 @@
         </div>
         
         <div class="section">
-            <h2>Skeleton Gizmo</h2>
-            <div class="video-container">
+            <h2>Bone Gizmo</h2>
+            <div class="media">
                 <video controls loop muted autoplay>
                     <source src="Skel.mp4" type="video/mp4">
                 </video>
@@ -148,36 +333,62 @@
         </div>
         
         <div class="section">
-            <h2>Features</h2>
-            <ul>
-                <li>Scene editor with hierarchy</li>
-                <li>Edit mode (vertex/edge/face)</li>
-                <li>Extrude, inset, bevel</li>
-                <li>Import FBX, OBJ, GLTF</li>
-                <li>Skeletal animation</li>
-                <li>Animation blending</li>
-                <li>Dopesheet editor</li>
-                <li>Pose mode bone gizmo</li>
-                <li>HDRI skyboxes</li>
-                <li>Undo/Redo system</li>
-            </ul>
+            <h2>Core Features</h2>
+            <div class="grid">
+                <ul>
+                    <li>Mesh editing (vert/edge/face)</li>
+                    <li>Blender-style extrude</li>
+                    <li>Subdivision surfaces</li>
+                    <li>Skeletal animation</li>
+                    <li>Animation state machine</li>
+                    <li>Bone gizmo pose mode</li>
+                </ul>
+                <ul>
+                    <li>Lua scripting engine</li>
+                    <li>Script editor (Ctrl+E)</li>
+                    <li>FBX/GLTF/OBJ import</li>
+                    <li>Undo/Redo (Ctrl+Z/Y)</li>
+                    <li>OpenGL + Vulkan RT</li>
+                    <li>Project serialization</li>
+                </ul>
+            </div>
         </div>
         
         <div class="section">
-            <h2>Controls</h2>
+            <h2>Keybinds</h2>
+            <div class="grid">
+                <ul>
+                    <li>Tab - Edit mode</li>
+                    <li>W/E/R - Move/Rotate/Scale</li>
+                    <li>G - Extrude (edit mode)</li>
+                    <li>S - Subdivide</li>
+                    <li>F - Toggle face/vert select</li>
+                    <li>Ctrl+Z/Y - Undo/Redo</li>
+                </ul>
+                <ul>
+                    <li>Ctrl+E - Script editor</li>
+                    <li>K - Animation editor</li>
+                    <li>Ctrl+S - Save project</li>
+                    <li>Ctrl+I - Import model</li>
+                    <li>Middle mouse - Orbit</li>
+                    <li>Right mouse - Pan</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>System Requirements</h2>
             <ul>
-                <li>Middle mouse - Orbit</li>
-                <li>Shift+Middle - Pan</li>
-                <li>Right click+WASD - Fly</li>
-                <li>G/R/T - Move/Rotate/Scale</li>
-                <li>Tab - Edit mode</li>
-                <li>1/2/3 - Vert/Edge/Face</li>
-                <li>Ctrl+Z/Y - Undo/Redo</li>
+                <li>Windows 10/11 (x64)</li>
+                <li>OpenGL 4.5+ capable GPU</li>
+                <li>.NET 8.0 Runtime (included)</li>
+                <li>~50MB disk space</li>
             </ul>
         </div>
         
         <footer>
-            &copy; 2026 dabooz productions (formerly SuplixSoftware) | <a href="tos.html">Terms of Service</a>
+            <p>&copy; 2026 DABOOZ PRODUCTIONS</p>
+            <p><a href="tos.html">TERMS OF SERVICE</a></p>
         </footer>
     </div>
 </body>
