@@ -1,234 +1,484 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
+    <title>FormnexoStudio - 3D Modeling for Game Assets</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FabsdRecording For  Screen Recording</title>
+    <meta name="description" content="Professional 3D modeling software for game asset creation. Fast, lightweight, and powerful.">
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
-            margin: 0;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #1a0a00 0%, #0a0a0a 100%);
+            border-bottom: 3px solid #ff6600;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .logo {
+            width: 120px;
+            filter: brightness(0) invert(1) sepia(1) saturate(10000%) hue-rotate(15deg);
+            margin-bottom: 30px;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        h1 {
+            font-size: 56px;
+            color: #ff6600;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 30px rgba(255, 102, 0, 0.5);
+        }
+        
+        .tagline {
+            font-size: 20px;
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+        
+        .version {
+            display: inline-block;
+            background: #1a1a1a;
+            border: 2px solid #ff6600;
+            padding: 8px 20px;
+            border-radius: 5px;
+            color: #ff6600;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .cta-section {
+            text-align: center;
+            margin: 60px 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #ff6600;
+            color: #fff;
+            padding: 18px 45px;
+            margin: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 102, 0, 0.3);
+        }
+        
+        .btn:hover {
+            background: #ff8833;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 102, 0, 0.5);
+        }
+        
+        .btn-secondary {
+            background: #1a1a1a;
+            border: 2px solid #ff6600;
+            color: #ff6600;
+        }
+        
+        .btn-secondary:hover {
+            background: #ff6600;
+            color: #fff;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+        
+        .stat-card {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .stat-card:hover {
+            border-color: #ff6600;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(255, 102, 0, 0.2);
+        }
+        
+        .stat-value {
+            font-size: 42px;
+            color: #ff6600;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            color: #888;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .section {
+            margin: 80px 0;
+        }
+        
+        .section-title {
+            font-size: 36px;
+            color: #ff6600;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .feature-card {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 30px;
+            transition: all 0.3s;
+        }
+        
+        .feature-card:hover {
+            border-color: #ff6600;
+            transform: translateY(-5px);
+        }
+        
+        .feature-card h3 {
+            color: #ff6600;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        
+        .feature-card ul {
+            list-style: none;
             padding: 0;
-            font-family: Verdana, Arial, Helvetica, sans-serif;
-            background-color: #ffffff;
-            color: #000000;
-            font-size: 9pt;
         }
         
-        a {
-            color: #000080;
-            text-decoration: none;
+        .feature-card li {
+            padding: 8px 0;
+            color: #ccc;
+            border-bottom: 1px solid #222;
         }
         
-        a:hover {
-            text-decoration: underline;
+        .feature-card li:last-child {
+            border-bottom: none;
         }
         
-        /* Header */
-        #header {
-            background-color: #003399;
-            color: #ffffff;
-            padding: 5px 10px;
+        .feature-card li:before {
+            content: "▸ ";
+            color: #ff6600;
             font-weight: bold;
-            font-size: 14pt;
-            border-bottom: 1px solid #000000;
+            margin-right: 8px;
         }
         
-        #header a {
-            color: #ffffff;
-            text-decoration: none;
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
         }
         
-        /* Layout */
-        #container {
-            display: flex;
-            min-height: 100vh;
+        .media-card {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
         }
         
-        #sidebar {
-            width: 160px;
-            background-color: #f0f0f0;
-            border-right: 1px solid #cccccc;
-            padding: 10px;
-            flex-shrink: 0;
+        .media-card:hover {
+            border-color: #ff6600;
+            transform: scale(1.02);
+            box-shadow: 0 5px 25px rgba(255, 102, 0, 0.3);
         }
         
-        #content {
-            padding: 20px;
-            flex-grow: 1;
-            max-width: 900px;
-        }
-        
-        /* Sidebar Navigation */
-        .nav-header {
-            background-color: #003399;
-            color: white;
-            padding: 3px 5px;
-            font-weight: bold;
-            margin-bottom: 5px;
-            margin-top: 15px;
-        }
-        .nav-header:first-child {
-            margin-top: 0;
-        }
-        
-        .nav-item {
-            padding: 2px 5px;
+        .media-card img, .media-card video {
+            width: 100%;
             display: block;
         }
         
-        .nav-item::before {
-            content: "▸ ";
-            color: #666;
-        }
-        
-        /* Main Content Elements */
-        h1 {
-            font-size: 16pt;
-            border-bottom: 1px solid #cccccc;
-            padding-bottom: 5px;
-            margin-top: 0;
-            color: #000000;
-        }
-        
-        h2 {
-            font-size: 12pt;
-            background-color: #e0e0e0;
-            padding: 3px;
-            margin-top: 20px;
-            color: #000000;
-        }
-        
-        h3 {
-            font-size: 10pt;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        
-        ul {
-            list-style-type: square;
-            margin-left: 20px;
-            padding-left: 0;
-        }
-        
-        li {
-            margin-bottom: 5px;
-        }
-        
-        .download-box {
-            background-color: #f8f8ff;
-            border: 1px solid #ccccff;
+        .media-card-title {
             padding: 15px;
-            margin: 15px 0;
-        }
-        
-        code {
-            font-family: "Courier New", monospace;
-            background-color: #f5f5f5;
-            padding: 2px 4px;
-            border: 1px solid #ddd;
-        }
-        
-        .timestamp {
-            color: #666;
-            font-size: 8pt;
-        }
-
-        .important {
-            color: red;
+            color: #ff6600;
             font-weight: bold;
+            text-align: center;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #1a0a00 0%, #0f0f0f 100%);
+            border: 2px solid #ff6600;
+            border-radius: 8px;
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .highlight-box h3 {
+            color: #ff6600;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        
+        .highlight-box p {
+            color: #ccc;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        
+        footer {
+            background: #111;
+            border-top: 3px solid #ff6600;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 80px;
+        }
+        
+        footer p {
+            color: #888;
+            margin: 10px 0;
+        }
+        
+        footer a {
+            color: #ff6600;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+        
+        footer a:hover {
+            color: #ff8833;
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 36px; }
+            .section-title { font-size: 28px; }
+            .feature-grid, .media-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-
-<div id="header">
-    fabsdrecording // <span style="font-weight: normal; font-size: 10pt;">simple screen recording software</span>
-</div>
-
-<div id="container">
-    <div id="sidebar">
-        <div class="nav-header">Home</div>
-        <a href="#news" class="nav-item">Latest News</a>
+    <div class="hero">
+        <img src="icon.png" class="logo" alt="FormnexoStudio">
+        <h1>FORMNEXOSTUDIO</h1>
+        <p class="tagline">Professional 3D Modeling for Game Assets</p>
+        <span class="version">v1.0 - Form</span>
+    </div>
+    
+    <div class="container">
+        <div class="cta-section">
+            <a href="form.exe" class="btn">DOWNLOAD NOW</a>
+            <a href="docs.html" class="btn btn-secondary">READ DOCUMENTATION</a>
+        </div>
         
-        <div class="nav-header">Product</div>
-        <a href="#features" class="nav-item">Features</a>
-        <a href="#download" class="nav-item">Download</a>
-        <a href="#docs" class="nav-item">Documentation</a>
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-value">FAST</div>
+                <div class="stat-label">Performance</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">~50MB</div>
+                <div class="stat-label">Download Size</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">FREE</div>
+                <div class="stat-label">Early Access</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">PBR</div>
+                <div class="stat-label">Real-Time Rendering</div>
+            </div>
+        </div>
         
-        <div class="nav-header">Support</div>
-        <a href="#faq" class="nav-item">FAQ</a>
+        <div class="highlight-box">
+            <h3>Built for Game Developers</h3>
+            <p>FormnexoStudio is designed specifically for creating optimized 3D assets for games. Fast workflow, clean topology, and seamless export to Unity and Unreal Engine.</p>
+        </div>
         
-        <div style="margin-top: 30px; font-size: 8pt; color: #666; text-align: center;">
-            Copyright © 2026<br>FabsdRecording
+        <div class="section">
+            <h2 class="section-title">What's New in v1.0</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Material System</h3>
+                    <ul>
+                        <li>Full PBR material editor</li>
+                        <li>Real-time 3D preview</li>
+                        <li>Material presets (Metal, Glass, etc.)</li>
+                        <li>Interactive RGB sliders</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Texture Support</h3>
+                    <ul>
+                        <li>Load PNG, JPG, TGA, BMP</li>
+                        <li>Embedded GLB texture extraction</li>
+                        <li>Albedo, Normal, Metallic/Roughness</li>
+                        <li>Auto-texture assignment</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>PBR Rendering</h3>
+                    <ul>
+                        <li>Cook-Torrance BRDF</li>
+                        <li>Physically-based materials</li>
+                        <li>HDR tonemapping</li>
+                        <li>Toggle with Z key</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Import/Export</h3>
+                    <ul>
+                        <li>FBX, OBJ, glTF, GLB import</li>
+                        <li>Native Windows file dialogs</li>
+                        <li>OBJ export with MTL materials</li>
+                        <li>Automatic material assignment</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">Core Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>Modeling Tools</h3>
+                    <ul>
+                        <li>Vertex/Edge/Face editing</li>
+                        <li>Blender-style extrude</li>
+                        <li>Subdivision surfaces</li>
+                        <li>Inset, Bevel, Weld</li>
+                        <li>Soft selection</li>
+                        <li>Edge loop selection</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Animation</h3>
+                    <ul>
+                        <li>Skeletal animation support</li>
+                        <li>Animation timeline editor</li>
+                        <li>Bone gizmo posing</li>
+                        <li>Keyframe creation</li>
+                        <li>FBX animation import</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Scripting</h3>
+                    <ul>
+                        <li>Lua scripting engine</li>
+                        <li>Built-in script editor</li>
+                        <li>Procedural generation API</li>
+                        <li>Mesh manipulation</li>
+                        <li>Automation scripts</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Workflow</h3>
+                    <ul>
+                        <li>Undo/Redo system</li>
+                        <li>Project serialization</li>
+                        <li>Keyboard shortcuts</li>
+                        <li>Multi-object selection</li>
+                        <li>Box selection</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">Screenshots & Videos</h2>
+            <div class="media-grid">
+                <div class="media-card" onclick="window.open('screenshot.png')">
+                    <img src="screenshot.png" alt="Editor Interface">
+                    <div class="media-card-title">Main Editor Interface</div>
+                </div>
+                
+                <div class="media-card" onclick="window.open('Screenshot1.png')">
+                    <img src="Screenshot1.png" alt="Animation System">
+                    <div class="media-card-title">Animation Timeline</div>
+                </div>
+                
+                <div class="media-card">
+                    <video controls loop muted>
+                        <source src="animated.mp4" type="video/mp4">
+                    </video>
+                    <div class="media-card-title">Animation Playback</div>
+                </div>
+                
+                <div class="media-card">
+                    <video controls loop muted>
+                        <source src="Skel.mp4" type="video/mp4">
+                    </video>
+                    <div class="media-card-title">Bone Gizmo System</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">System Requirements</h2>
+            <div class="highlight-box">
+                <ul style="list-style: none; padding: 0; text-align: left; max-width: 600px; margin: 0 auto;">
+                    <li style="padding: 10px 0; border-bottom: 1px solid #333;">
+                        <strong style="color: #ff6600;">OS:</strong> Windows 10/11 (x64)
+                    </li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #333;">
+                        <strong style="color: #ff6600;">GPU:</strong> OpenGL 4.5+ capable graphics card
+                    </li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #333;">
+                        <strong style="color: #ff6600;">Runtime:</strong> .NET 8.0 (included)
+                    </li>
+                    <li style="padding: 10px 0;">
+                        <strong style="color: #ff6600;">Disk Space:</strong> ~50MB
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="cta-section">
+            <h2 class="section-title">Ready to Start Creating?</h2>
+            <p style="color: #aaa; margin-bottom: 30px;">Download FormnexoStudio and start building game-ready 3D assets today.</p>
+            <a href="form.exe" class="btn">DOWNLOAD v1.0</a>
+            <a href="docs.html" class="btn btn-secondary">VIEW DOCUMENTATION</a>
         </div>
     </div>
     
-    <div id="content">
-        <h1>FabsdRecording Downloads</h1>
-        
-        <ul>
-            <li><a href="#current">Current Release</a></li>
-            <li><a href="#docs">Documentation</a></li>
-        </ul>
-        
-        <h2 id="news">Latest News</h2>
-        
-        <p><strong>Feb 10, 2026:</strong> FabsdRecording 1.0 has been released! This major update brings specific window capture and rendering fixes.</p>
-        
-        <h2 id="current">Current Release</h2>
-        
-        <p><strong>FabsdRecording 1.0</strong> is now available. This release focuses on stability and core features.</p>
-        
-        <div id="download" class="download-box">
-            <h3>Download</h3>
-            <p>
-                <a href="FabsdRecordingSetup.exe" style="font-size: 12pt; font-weight: bold;">Download FabsdRecording 1.0 (Setup)</a><br>
-                <span class="timestamp">Size: ~70 MB | Released: Feb 10, 2026</span>
-            </p>
-            <p><strong>Requirements:</strong> Windows 10/11 (64-bit)</p>
-        </div>
-
-        <h3 id="features">Key Features in 1.0:</h3>
-        <ul>
-            <li><strong>Specific Window Capture:</strong> Record only the window you want. No background clutter.</li>
-            <li><strong>Infinite Loop Fix:</strong> Smart rendering prevents the "mirror effect" when recording the recorder.</li>
-            <li><strong>Zero Bloat:</strong> No futuristic 3D nonsense. Just simple, reliable recording.</li>
-            <li><strong>Self-Contained:</strong> Runs without needing to install .NET manually.</li>
-        </ul>
-        
-        <hr style="margin: 30px 0; border: 0; border-top: 1px solid #eee;">
-        
-        <h1 id="docs">Documentation</h1>
-        
-        <p>FabsdRecording is designed to be intuitive. Here is a quick guide on how to use the advanced features.</p>
-        
-        <h2>How to Record a Specific Window</h2>
-        <p>Instead of recording your entire screen, you can target a specific application window.</p>
-        <ol>
-            <li>Launch <strong>FabsdRecording</strong>.</li>
-            <li>In the "Source" dropdown, select <strong>Window Capture</strong>.</li>
-            <li>Click the <strong>Select Window</strong> button that appears.</li>
-            <li>A list of open applications will appear. Select the one you want to record (e.g., "Notepad" or "Chrome").</li>
-            <li>Click <strong>OK</strong>. The preview will update to show only that window.</li>
-        </ol>
-        
-        <h2>Preventing the "Infinite Tunnel"</h2>
-        <p>If you are recording the full screen that FabsdRecording is running on:</p>
-        <ul>
-            <li>Check the box labeled <strong>Hide Window from Capture</strong>.</li>
-            <li>The FabsdRecording window will disappear from the recording, revealing whatever is behind it.</li>
-            <li>It remains visible to you, so you can still control the recording.</li>
-        </ul>
-
-        <h2 id="faq">FAQ & Troubleshooting</h2>
-        <p><strong>Q: The window list is empty?</strong><br>
-        A: Make sure the application you want to record is not minimized to the tray. It must be open on the desktop.</p>
-        
-        <p><strong>Q: Audio is out of sync?</strong><br>
-        A: We are working on this for version 1.1. For now, try to keep recordings under 2 hours.</p>
-
-    </div>
-</div>
-
+    <footer>
+        <p style="color: #ff6600; font-size: 18px; font-weight: bold; margin-bottom: 15px;">FORMNEXOSTUDIO</p>
+        <p>&copy; 2026 DABOOZ PRODUCTIONS</p>
+        <p>
+            <a href="docs.html">Documentation</a>
+            <a href="tos.html">Terms of Service</a>
+        </p>
+    </footer>
 </body>
 </html>

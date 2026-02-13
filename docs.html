@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FormnexoStudio - Documentation</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background: #0a0a0a;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+        }
+        
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 100vh;
+            background: #111;
+            border-right: 2px solid #ff6600;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        
+        .sidebar h2 {
+            color: #ff6600;
+            font-size: 18px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+        }
+        
+        .sidebar li {
+            margin: 8px 0;
+        }
+        
+        .sidebar a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .sidebar a:hover {
+            color: #ff6600;
+        }
+        
+        .content {
+            margin-left: 270px;
+            padding: 40px;
+            max-width: 900px;
+        }
+        
+        .header {
+            border-bottom: 3px solid #ff6600;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+        
+        h1 {
+            color: #ff6600;
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #888;
+            font-size: 16px;
+        }
+        
+        h2 {
+            color: #ff6600;
+            font-size: 28px;
+            margin: 40px 0 20px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+        
+        h2:first-of-type {
+            border-top: none;
+            margin-top: 0;
+        }
+        
+        h3 {
+            color: #ff8833;
+            font-size: 22px;
+            margin: 30px 0 15px;
+        }
+        
+        p {
+            margin: 15px 0;
+            color: #ccc;
+        }
+        
+        code {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #ff6600;
+            font-family: 'Courier New', monospace;
+        }
+        
+        pre {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        pre code {
+            background: none;
+            border: none;
+            padding: 0;
+        }
+        
+        .key {
+            display: inline-block;
+            background: #222;
+            border: 2px solid #444;
+            border-radius: 4px;
+            padding: 4px 10px;
+            margin: 0 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            color: #ff6600;
+            box-shadow: 0 2px 0 #111;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            border: 1px solid #333;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        th {
+            background: #1a1a1a;
+            color: #ff6600;
+            font-weight: bold;
+        }
+        
+        td {
+            background: #0f0f0f;
+        }
+        
+        .note {
+            background: #1a1a00;
+            border-left: 4px solid #ffaa00;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .note strong {
+            color: #ffaa00;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .feature-card {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        
+        .feature-card h4 {
+            color: #ff6600;
+            margin-bottom: 10px;
+        }
+        
+        ul {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+        
+        li {
+            margin: 8px 0;
+            color: #ccc;
+        }
+        
+        a {
+            color: #ff6600;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+                border-right: none;
+                border-bottom: 2px solid #ff6600;
+            }
+            .content {
+                margin-left: 0;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Navigation</h2>
+        <ul>
+            <li><a href="#getting-started">Getting Started</a></li>
+            <li><a href="#interface">Interface</a></li>
+            <li><a href="#modeling">Modeling Tools</a></li>
+            <li><a href="#materials">Materials & Textures</a></li>
+            <li><a href="#import-export">Import/Export</a></li>
+            <li><a href="#rendering">Rendering Modes</a></li>
+            <li><a href="#animation">Animation</a></li>
+            <li><a href="#scripting">Lua Scripting</a></li>
+            <li><a href="#shortcuts">Keyboard Shortcuts</a></li>
+            <li><a href="#tips">Tips & Tricks</a></li>
+            <li><a href="index.html">← Back to Home</a></li>
+        </ul>
+    </div>
+    
+    <div class="content">
+        <div class="header">
+            <h1>FormnexoStudio Documentation</h1>
+            <p class="subtitle">Complete guide to 3D modeling for game assets</p>
+        </div>
+        
+        <h2 id="getting-started">Getting Started</h2>
+        
+        <h3>Installation</h3>
+        <p>Download and run <code>form.exe</code>. No installation required - it's portable! The application will create a config folder in your user directory on first run.</p>
+        
+        <h3>First Launch</h3>
+        <p>When you first open FormnexoStudio, you'll see:</p>
+        <ul>
+            <li><strong>Scene Hierarchy</strong> - Left panel showing all objects</li>
+            <li><strong>Properties Panel</strong> - Bottom left with object details</li>
+            <li><strong>3D Viewport</strong> - Center area for modeling</li>
+            <li><strong>Toolbar</strong> - Top bar with tools and modes</li>
+            <li><strong>Status Bar</strong> - Bottom showing camera position and stats</li>
+        </ul>
+        
+        <h3>Saving Your Work</h3>
+        <p>FormnexoStudio uses <code>.form</code> project files to save your entire scene:</p>
+        <ul>
+            <li>Press <span class="key">Ctrl</span> + <span class="key">S</span> to quick save</li>
+            <li>Click <strong>Save</strong> in the menu bar to save as a new file</li>
+            <li>Click <strong>Load</strong> to open an existing project</li>
+            <li>Projects save all objects, materials, transforms, and scene hierarchy</li>
+        </ul>
+        
+        <div class="note">
+            <strong>Note:</strong> Texture files are not embedded in <code>.form</code> projects. Keep texture files in the same location when loading projects.
+        </div>
+        
+        <h3>Navigation</h3>
+        <table>
+            <tr>
+                <th>Action</th>
+                <th>Control</th>
+            </tr>
+            <tr>
+                <td>Orbit Camera</td>
+                <td><span class="key">Middle Mouse</span> + Drag</td>
+            </tr>
+            <tr>
+                <td>Pan Camera</td>
+                <td><span class="key">Right Mouse</span> + Drag</td>
+            </tr>
+            <tr>
+                <td>Zoom</td>
+                <td><span class="key">Scroll Wheel</span></td>
+            </tr>
+        </table>
+        
+        <h2 id="interface">Interface Overview</h2>
+        
+        <h3>Menu Bar</h3>
+        <p>Top menu provides quick access to:</p>
+        <ul>
+            <li><strong>Save</strong> - Save current project (Ctrl+S)</li>
+            <li><strong>Load</strong> - Open existing project</li>
+            <li><strong>Import</strong> - Load FBX, OBJ, glTF, GLB files</li>
+            <li><strong>Export</strong> - Save models to various formats</li>
+            <li><strong>Add Primitives</strong> - Cube, Sphere, Plane, Cylinder</li>
+            <li><strong>Undo/Redo</strong> - History management</li>
+            <li><strong>Script Editor</strong> - Open Lua scripting panel</li>
+        </ul>
+        
+        <h3>Toolbar</h3>
+        <p>Main toolbar shows current mode and tools:</p>
+        <ul>
+            <li><strong>Move/Rotate/Scale</strong> - Transform gizmos</li>
+            <li><strong>Solid/PBR Toggle</strong> - Switch rendering modes</li>
+            <li><strong>Edit Mode Tools</strong> - Extrude, Subdivide, Inset, Weld</li>
+        </ul>
+        
+        <h3>Properties Panel</h3>
+        <p>Shows detailed information about selected object:</p>
+        <ul>
+            <li>Transform values (Position, Rotation, Scale)</li>
+            <li>Mesh statistics (Vertices, Faces)</li>
+            <li>Material properties</li>
+            <li>Soft selection settings</li>
+            <li>Skeleton and animation data</li>
+        </ul>
+        
+        <h2 id="modeling">Modeling Tools</h2>
+        
+        <h3>Object Mode</h3>
+        <p>Default mode for manipulating entire objects. Use gizmos to transform:</p>
+        <ul>
+            <li><span class="key">W</span> - Move tool (translate)</li>
+            <li><span class="key">E</span> - Rotate tool</li>
+            <li><span class="key">R</span> - Scale tool</li>
+            <li><span class="key">Delete</span> - Delete selected object</li>
+        </ul>
+        
+        <h3>Edit Mode</h3>
+        <p>Press <span class="key">Tab</span> to enter Edit Mode and modify mesh geometry.</p>
+        
+        <h4>Selection Modes</h4>
+        <ul>
+            <li><strong>Vertex Mode</strong> - Select and move individual points</li>
+            <li><strong>Edge Mode</strong> - Select edges (Alt+Click for edge loops)</li>
+            <li><strong>Face Mode</strong> - Select polygons</li>
+            <li>Toggle with <span class="key">F</span> key</li>
+        </ul>
+        
+        <h4>Modeling Operations</h4>
+        <table>
+            <tr>
+                <th>Tool</th>
+                <th>Shortcut</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>Extrude</td>
+                <td><span class="key">G</span></td>
+                <td>Pull selected geometry outward. Move mouse to adjust, click to confirm, <span class="key">Esc</span> to cancel</td>
+            </tr>
+            <tr>
+                <td>Subdivide</td>
+                <td><span class="key">S</span></td>
+                <td>Split selected faces into smaller faces for more detail</td>
+            </tr>
+            <tr>
+                <td>Inset</td>
+                <td><span class="key">I</span></td>
+                <td>Create an inset face within selected faces</td>
+            </tr>
+            <tr>
+                <td>Bevel</td>
+                <td><span class="key">B</span></td>
+                <td>Round off edges and corners</td>
+            </tr>
+            <tr>
+                <td>Target Weld</td>
+                <td><span class="key">V</span></td>
+                <td>Merge selected vertices together</td>
+            </tr>
+            <tr>
+                <td>Merge Vertices</td>
+                <td><span class="key">M</span></td>
+                <td>Combine nearby vertices</td>
+            </tr>
+            <tr>
+                <td>Bridge Edge Loops</td>
+                <td><span class="key">J</span></td>
+                <td>Connect two edge loops with faces</td>
+            </tr>
+            <tr>
+                <td>Subdivide Edges</td>
+                <td><span class="key">D</span></td>
+                <td>Add vertices along selected edges</td>
+            </tr>
+            <tr>
+                <td>Collapse Edges</td>
+                <td><span class="key">X</span></td>
+                <td>Remove edges and merge vertices</td>
+            </tr>
+        </table>
+        
+        <h3>Soft Selection</h3>
+        <p>Enable in the Properties panel to create smooth, organic deformations. Adjusts nearby vertices with falloff based on distance.</p>
+        
+        <h2 id="materials">Materials & Textures</h2>
+        
+        <h3>Material Editor</h3>
+        <p>Click "Open Material Editor" in the Properties panel to access the fullscreen material editor.</p>
+        
+        <h4>PBR Properties</h4>
+        <ul>
+            <li><strong>Base Color</strong> - RGB sliders for main color</li>
+            <li><strong>Metallic</strong> - 0 = dielectric, 1 = metal</li>
+            <li><strong>Roughness</strong> - 0 = mirror, 1 = matte</li>
+            <li><strong>Alpha</strong> - Transparency (0 = invisible, 1 = opaque)</li>
+            <li><strong>Emissive</strong> - Self-illumination color and strength</li>
+        </ul>
+        
+        <h4>Material Presets</h4>
+        <p>Quick-apply common materials:</p>
+        <ul>
+            <li><strong>Metal</strong> - Shiny metallic surface</li>
+            <li><strong>Glass</strong> - Transparent with low roughness</li>
+            <li><strong>Plastic</strong> - Smooth colored surface</li>
+            <li><strong>Wood</strong> - Rough brown material</li>
+            <li><strong>Rubber</strong> - Dark matte surface</li>
+            <li><strong>Emissive</strong> - Glowing orange light</li>
+        </ul>
+        
+        <h3>Texture Loading</h3>
+        <p>In the material editor, use the TEXTURES section to load image files:</p>
+        <ul>
+            <li><strong>Albedo</strong> - Base color texture (diffuse map)</li>
+            <li><strong>Normal</strong> - Surface detail without geometry</li>
+            <li><strong>Metallic/Roughness</strong> - PBR texture maps</li>
+        </ul>
+        
+        <p>Supported formats: PNG, JPG, JPEG, BMP, TGA</p>
+        
+        <div class="note">
+            <strong>Note:</strong> Textures are automatically loaded from embedded data in GLB files. For FBX/OBJ, place texture files in the same folder as the model.
+        </div>
+        
+        <h3>Real-Time Preview</h3>
+        <p>The material editor shows a live 3D preview of your selected object with the material applied. The preview rotates automatically and updates as you adjust sliders.</p>
+        
+        <h2 id="import-export">Import & Export</h2>
+        
+        <h3>Importing Models</h3>
+        <p>Click <strong>Import</strong> in the menu bar to open the import dialog.</p>
+        
+        <h4>Supported Formats</h4>
+        <ul>
+            <li><strong>FBX</strong> - Autodesk format with animations</li>
+            <li><strong>OBJ</strong> - Universal format (geometry only)</li>
+            <li><strong>glTF/GLB</strong> - Modern format with PBR materials</li>
+        </ul>
+        
+        <p>The importer automatically:</p>
+        <ul>
+            <li>Loads embedded textures from GLB files</li>
+            <li>Imports materials and assigns them to meshes</li>
+            <li>Loads skeletal animations and bone data</li>
+            <li>Triangulates all geometry</li>
+            <li>Generates normals if missing</li>
+        </ul>
+        
+        <h3>Exporting Models</h3>
+        <p>Select an object and click <strong>Export</strong> in the menu bar.</p>
+        
+        <h4>Export Formats</h4>
+        <ul>
+            <li><strong>OBJ</strong> - Universal format with MTL material file</li>
+            <li><strong>FBX</strong> - Exports as OBJ (full FBX export coming soon)</li>
+            <li><strong>glTF</strong> - Exports as OBJ (full glTF export coming soon)</li>
+        </ul>
+        
+        <p>OBJ export includes:</p>
+        <ul>
+            <li>Vertex positions with world transform applied</li>
+            <li>Normals and UV coordinates</li>
+            <li>MTL file with PBR material properties</li>
+        </ul>
+        
+        <h2 id="rendering">Rendering Modes</h2>
+        
+        <h3>Solid Mode (Default)</h3>
+        <p>Fast Phong shading for modeling work. Good performance, simple lighting.</p>
+        
+        <h3>PBR Mode</h3>
+        <p>Press <span class="key">Z</span> or click the "PBR" button to enable physically-based rendering.</p>
+        
+        <h4>PBR Features</h4>
+        <ul>
+            <li>Cook-Torrance BRDF for realistic materials</li>
+            <li>Proper metallic and roughness response</li>
+            <li>Fresnel reflections</li>
+            <li>Multiple light sources (key + fill)</li>
+            <li>HDR tonemapping</li>
+            <li>Gamma correction</li>
+        </ul>
+        
+        <p>Use PBR mode to preview how materials will look in game engines like Unity or Unreal.</p>
+        
+        <h2 id="animation">Animation System</h2>
+        
+        <h3>Animation Editor</h3>
+        <p>Press <span class="key">K</span> to open the animation timeline.</p>
+        
+        <h4>Features</h4>
+        <ul>
+            <li>Play/Pause/Stop controls</li>
+            <li>Timeline scrubbing</li>
+            <li>Keyframe creation</li>
+            <li>Bone selection and posing</li>
+            <li>Multiple animation clips per object</li>
+        </ul>
+        
+        <h3>Skeletal Animation</h3>
+        <p>Imported models with skeletons automatically show bone gizmos. Select bones to pose and animate characters.</p>
+        
+        <h2 id="scripting">Lua Scripting</h2>
+        
+        <h3>Script Editor</h3>
+        <p>Press <span class="key">Ctrl</span> + <span class="key">E</span> to open the Lua script editor.</p>
+        
+        <h3>API Reference</h3>
+        
+        <h4>Creating Objects</h4>
+        <pre><code>-- Create a cube at position (x, y, z) with size
+local cube = api:CreateCube(0, 0, 0, 1.0)
+
+-- Create a sphere
+local sphere = api:CreateSphere(5, 0, 0, 2.0)
+
+-- Create a plane
+local plane = api:CreatePlane(0, -1, 0, 10.0)
+
+-- Create a cylinder
+local cylinder = api:CreateCylinder(0, 5, 0, 1.0, 3.0)</code></pre>
+
+        <h4>Procedural Generation</h4>
+        <pre><code>-- Generate a grid of cubes
+for x = 0, 9 do
+    for z = 0, 9 do
+        api:CreateCube(x * 2, 0, z * 2, 1.0)
+    end
+end
+
+-- Create a spiral
+for i = 0, 50 do
+    local angle = i * 0.5
+    local x = math.cos(angle) * i * 0.2
+    local z = math.sin(angle) * i * 0.2
+    api:CreateCube(x, i * 0.1, z, 0.5)
+end</code></pre>
+
+        <h4>Mesh Manipulation</h4>
+        <pre><code>-- Access scene nodes
+local nodes = api:GetAllNodes()
+for i, node in ipairs(nodes) do
+    print("Node: " .. node.Name)
+end
+
+-- Modify transforms
+api:SetPosition(node, 0, 5, 0)
+api:SetRotation(node, 0, 45, 0)
+api:SetScale(node, 2, 2, 2)</code></pre>
+
+        <h3>Example Scripts</h3>
+        
+        <h4>Procedural City</h4>
+        <pre><code>-- Generate a simple city layout
+for x = 0, 10 do
+    for z = 0, 10 do
+        if math.random() > 0.3 then
+            local height = math.random(2, 8)
+            api:CreateCube(x * 3, height / 2, z * 3, 1.0, height, 1.0)
+        end
+    end
+end</code></pre>
+
+        <h2 id="shortcuts">Complete Keyboard Shortcuts</h2>
+        
+        <h3>General</h3>
+        <table>
+            <tr><th>Action</th><th>Shortcut</th></tr>
+            <tr><td>Save Project</td><td><span class="key">Ctrl</span> + <span class="key">S</span></td></tr>
+            <tr><td>Undo</td><td><span class="key">Ctrl</span> + <span class="key">Z</span></td></tr>
+            <tr><td>Redo</td><td><span class="key">Ctrl</span> + <span class="key">Y</span> or <span class="key">Ctrl</span> + <span class="key">Shift</span> + <span class="key">Z</span></td></tr>
+            <tr><td>Delete Object</td><td><span class="key">Delete</span></td></tr>
+            <tr><td>Toggle Shortcuts Overlay</td><td><span class="key">H</span></td></tr>
+        </table>
+        
+        <h3>View & Navigation</h3>
+        <table>
+            <tr><th>Action</th><th>Shortcut</th></tr>
+            <tr><td>Orbit Camera</td><td><span class="key">Middle Mouse</span> + Drag</td></tr>
+            <tr><td>Pan Camera</td><td><span class="key">Right Mouse</span> + Drag</td></tr>
+            <tr><td>Zoom</td><td><span class="key">Scroll Wheel</span></td></tr>
+            <tr><td>Toggle Render Mode</td><td><span class="key">Z</span></td></tr>
+        </table>
+        
+        <h3>Transform Tools</h3>
+        <table>
+            <tr><th>Action</th><th>Shortcut</th></tr>
+            <tr><td>Move Tool</td><td><span class="key">W</span></td></tr>
+            <tr><td>Rotate Tool</td><td><span class="key">E</span></td></tr>
+            <tr><td>Scale Tool</td><td><span class="key">R</span></td></tr>
+        </table>
+        
+        <h3>Edit Mode</h3>
+        <table>
+            <tr><th>Action</th><th>Shortcut</th></tr>
+            <tr><td>Toggle Edit Mode</td><td><span class="key">Tab</span></td></tr>
+            <tr><td>Toggle Selection Mode</td><td><span class="key">F</span></td></tr>
+            <tr><td>Extrude</td><td><span class="key">G</span></td></tr>
+            <tr><td>Subdivide</td><td><span class="key">S</span></td></tr>
+            <tr><td>Inset</td><td><span class="key">I</span></td></tr>
+            <tr><td>Bevel</td><td><span class="key">B</span></td></tr>
+            <tr><td>Target Weld</td><td><span class="key">V</span></td></tr>
+            <tr><td>Merge Vertices</td><td><span class="key">M</span></td></tr>
+            <tr><td>Bridge Edge Loops</td><td><span class="key">J</span></td></tr>
+            <tr><td>Subdivide Edges</td><td><span class="key">D</span></td></tr>
+            <tr><td>Collapse Edges</td><td><span class="key">X</span></td></tr>
+            <tr><td>Confirm Extrude</td><td><span class="key">Left Click</span></td></tr>
+            <tr><td>Cancel Extrude</td><td><span class="key">Esc</span></td></tr>
+        </table>
+        
+        <h3>Panels & Editors</h3>
+        <table>
+            <tr><th>Action</th><th>Shortcut</th></tr>
+            <tr><td>Script Editor</td><td><span class="key">Ctrl</span> + <span class="key">E</span></td></tr>
+            <tr><td>Animation Editor</td><td><span class="key">K</span></td></tr>
+            <tr><td>Close Material Editor</td><td><span class="key">Esc</span></td></tr>
+        </table>
+        
+        <h2 id="tips">Tips & Tricks</h2>
+        
+        <h3>Workflow Tips</h3>
+        
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h4>Edge Loop Selection</h4>
+                <p>Hold <span class="key">Alt</span> and click an edge to select the entire edge loop. Great for adding detail to cylindrical objects.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h4>Soft Selection</h4>
+                <p>Enable in Properties panel for organic modeling. Adjust radius to control falloff distance.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h4>Multi-Select</h4>
+                <p>Hold <span class="key">Shift</span> and click to add to selection. Works in both Object and Edit modes.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h4>Box Select</h4>
+                <p>Click and drag to create a selection box. All vertices/faces inside will be selected.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h4>Material Preview</h4>
+                <p>Use PBR mode (<span class="key">Z</span>) to see realistic material appearance before exporting to game engines.</p>
+            </div>
+            
+            <div class="feature-card">
+                <h4>Quick Primitives</h4>
+                <p>Use menu bar buttons to quickly add cubes, spheres, planes, and cylinders to your scene.</p>
+            </div>
+        </div>
+        
+        <h3>Performance Tips</h3>
+        <ul>
+            <li>Use Solid mode for heavy modeling work, switch to PBR for final preview</li>
+            <li>Keep poly count reasonable - aim for game-ready assets</li>
+            <li>Use subdivision sparingly - it multiplies face count quickly</li>
+            <li>Merge vertices after modeling to remove duplicates</li>
+        </ul>
+        
+        <h3>Game Asset Workflow</h3>
+        <ol>
+            <li>Model in Solid mode for speed</li>
+            <li>Apply materials and adjust PBR values</li>
+            <li>Load textures (albedo, normal, metallic/roughness)</li>
+            <li>Preview in PBR mode to check appearance</li>
+            <li>Export to OBJ/FBX for Unity/Unreal</li>
+        </ol>
+        
+        <div class="note">
+            <strong>Pro Tip:</strong> FormnexoStudio is designed for game asset creation. Keep models optimized with clean topology and reasonable poly counts for real-time rendering.
+        </div>
+        
+        <h3>Common Issues</h3>
+        
+        <h4>Textures Not Loading</h4>
+        <p>For FBX/OBJ files, ensure texture files are in the same folder as the model. GLB files with embedded textures load automatically.</p>
+        
+        <h4>Model Appears Grey</h4>
+        <p>The model may not have textures assigned. Open the material editor and load textures manually, or check if the import included materials.</p>
+        
+        <h4>Extrude Not Working</h4>
+        <p>Make sure you're in Edit Mode (<span class="key">Tab</span>) and have geometry selected. Press <span class="key">G</span> to start extrude, move mouse to adjust, click to confirm.</p>
+        
+        <h4>Can't Select Vertices</h4>
+        <p>Toggle selection mode with <span class="key">F</span> to switch between Vertex, Edge, and Face modes.</p>
+        
+        <hr style="border: 1px solid #333; margin: 40px 0;">
+        
+        <p style="text-align: center; color: #888;">
+            <strong>Need more help?</strong><br>
+            Visit <a href="index.html">FormnexoStudio Home</a> or check the community forums.
+        </p>
+        
+        <p style="text-align: center; color: #666; font-size: 12px; margin-top: 40px;">
+            © 2026 DABOOZ PRODUCTIONS - FormnexoStudio Documentation v1.0
+        </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FormnexoStudio - Tutorials</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background: #0a0a0a;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+        }
+        
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 100vh;
+            background: #111;
+            border-right: 2px solid #ff6600;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        
+        .sidebar h2 {
+            color: #ff6600;
+            font-size: 18px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+        }
+        
+        .sidebar li {
+            margin: 8px 0;
+        }
+        
+        .sidebar a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .sidebar a:hover {
+            color: #ff6600;
+        }
+        
+        .content {
+            margin-left: 270px;
+            padding: 40px;
+            max-width: 900px;
+        }
+        
+        .header {
+            border-bottom: 3px solid #ff6600;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+        
+        h1 {
+            color: #ff6600;
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #888;
+            font-size: 16px;
+        }
+        
+        h2 {
+            color: #ff6600;
+            font-size: 28px;
+            margin: 40px 0 20px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+        
+        h2:first-of-type {
+            border-top: none;
+            margin-top: 0;
+        }
+        
+        h3 {
+            color: #ff8833;
+            font-size: 22px;
+            margin: 30px 0 15px;
+        }
+        
+        h4 {
+            color: #ffaa55;
+            font-size: 18px;
+            margin: 20px 0 10px;
+        }
+        
+        p {
+            margin: 15px 0;
+            color: #ccc;
+        }
+        
+        .key {
+            display: inline-block;
+            background: #222;
+            border: 2px solid #444;
+            border-radius: 4px;
+            padding: 4px 10px;
+            margin: 0 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            color: #ff6600;
+            box-shadow: 0 2px 0 #111;
+        }
+        
+        .tutorial-card {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-left: 4px solid #ff6600;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 5px;
+        }
+        
+        .tutorial-card h3 {
+            margin-top: 0;
+            color: #ff6600;
+        }
+        
+        .step {
+            background: #0f0f0f;
+            border-left: 3px solid #ff6600;
+            padding: 15px 20px;
+            margin: 15px 0;
+        }
+        
+        .step-number {
+            display: inline-block;
+            background: #ff6600;
+            color: #000;
+            font-weight: bold;
+            padding: 5px 12px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .note {
+            background: #1a1a00;
+            border-left: 4px solid #ffaa00;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .note strong {
+            color: #ffaa00;
+        }
+        
+        .tip {
+            background: #001a1a;
+            border-left: 4px solid #00aaff;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .tip strong {
+            color: #00aaff;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+        
+        li {
+            margin: 8px 0;
+            color: #ccc;
+        }
+        
+        a {
+            color: #ff6600;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .difficulty {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .difficulty.beginner {
+            background: #00aa00;
+            color: #fff;
+        }
+        
+        .difficulty.intermediate {
+            background: #ffaa00;
+            color: #000;
+        }
+        
+        .difficulty.advanced {
+            background: #aa0000;
+            color: #fff;
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+                border-right: none;
+                border-bottom: 2px solid #ff6600;
+            }
+            .content {
+                margin-left: 0;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Tutorials</h2>
+        <ul>
+            <li><a href="#basics">Getting Started</a></li>
+            <li><a href="#first-model">Your First Model</a></li>
+            <li><a href="#sword">Low-Poly Sword</a></li>
+            <li><a href="#crate">Textured Crate</a></li>
+            <li><a href="#character">Character Modeling</a></li>
+            <li><a href="#materials">PBR Materials</a></li>
+            <li><a href="#scripting">Lua Scripting</a></li>
+            <li><a href="#export">Export to Unity</a></li>
+            <li><a href="index.html">← Back to Home</a></li>
+            <li><a href="docs.html">Documentation</a></li>
+        </ul>
+    </div>
+    
+    <div class="content">
+        <div class="header">
+            <h1>FormnexoStudio Tutorials</h1>
+            <p class="subtitle">Step-by-step guides to master 3D modeling for games</p>
+        </div>
+        
+        <h2 id="basics">Getting Started</h2>
+        <span class="difficulty beginner">BEGINNER</span>
+        
+        <div class="tutorial-card">
+            <h3>Tutorial 1: Interface & Navigation</h3>
+            <p><strong>Time:</strong> 5 minutes | <strong>Goal:</strong> Learn to navigate the 3D viewport</p>
+            
+            <div class="step">
+                <span class="step-number">1</span>
+                <strong>Launch FormnexoStudio</strong><br>
+                Run <code>form.exe</code> and wait for the splash screen. You'll see a default scene with a grid.
+            </div>
+            
+            <div class="step">
+                <span class="step-number">2</span>
+                <strong>Camera Controls</strong><br>
+                • Hold <span class="key">Middle Mouse</span> and drag to orbit around the scene<br>
+                • Hold <span class="key">Right Mouse</span> and drag to pan the camera<br>
+                • Use <span class="key">Scroll Wheel</span> to zoom in and out
+            </div>
+            
+            <div class="step">
+                <span class="step-number">3</span>
+                <strong>Add Your First Object</strong><br>
+                Click the <strong>Cube</strong> button in the top menu bar. A cube will appear at the origin (0, 0, 0).
+            </div>
+            
+            <div class="step">
+                <span class="step-number">4</span>
+                <strong>Transform Tools</strong><br>
+                • Press <span class="key">W</span> for Move tool (see colored arrows)<br>
+                • Press <span class="key">E</span> for Rotate tool (see rotation rings)<br>
+                • Press <span class="key">R</span> for Scale tool (see scale handles)<br>
+                • Click and drag the colored handles to transform
+            </div>
+            
+            <div class="tip">
+                <strong>Pro Tip:</strong> Press <span class="key">H</span> to toggle the shortcuts overlay - it shows all available hotkeys!
+            </div>
+        </div>
+        
+        <h2 id="first-model">Your First Model: Simple Table</h2>
+        <span class="difficulty beginner">BEGINNER</span>
+        
+        <div class="tutorial-card">
+            <h3>Tutorial 2: Build a Table from Primitives</h3>
+            <p><strong>Time:</strong> 10 minutes | <strong>Goal:</strong> Learn basic object manipulation</p>
+            
+            <div class="step">
+                <span class="step-number">1</span>
+                <strong>Create the Tabletop</strong><br>
+                • Click <strong>Cube</strong> in the menu<br>
+                • Press <span class="key">R</span> for Scale tool<br>
+                • Drag the green handle (Y-axis) down to make it flat<br>
+                • Drag the red (X) and blue (Z) handles out to make it wider
+            </div>
+            
+            <div class="step">
+                <span class="step-number">2</span>
+                <strong>Create First Leg</strong><br>
+                • Add another <strong>Cube</strong><br>
+                • Press <span class="key">R</span> and scale it tall and thin (like a cylinder)<br>
+                • Press <span class="key">W</span> and move it under one corner of the tabletop
+            </div>
+            
+            <div class="step">
+                <span class="step-number">3</span>
+                <strong>Duplicate the Legs</strong><br>
+                • Select the leg in the Scene Hierarchy (left panel)<br>
+                • Press <span class="key">Ctrl</span> + <span class="key">D</span> to duplicate<br>
+                • Move the duplicate to another corner<br>
+                • Repeat for all four corners
+            </div>
+            
+            <div class="step">
+                <span class="step-number">4</span>
+                <strong>Apply Materials</strong><br>
+                • Select the tabletop<br>
+                • In Properties panel, click <strong>Open Material Editor</strong><br>
+                • Choose the <strong>Wood</strong> preset<br>
+                • Click <strong>Apply</strong> and close the editor
+            </div>
+            
+            <div class="note">
+                <strong>Success!</strong> You've created your first 3D model. Try pressing <span class="key">Z</span> to see it in PBR render mode.
+            </div>
+        </div>
+        
+        <h2 id="sword">Low-Poly Game Asset: Sword</h2>
+        <span class="difficulty intermediate">INTERMEDIATE</span>
+        
+        <div class="tutorial-card">
+            <h3>Tutorial 3: Model a Low-Poly Sword</h3>
+            <p><strong>Time:</strong> 20 minutes | <strong>Goal:</strong> Learn Edit Mode and modeling tools</p>
+            
+            <div class="step">
+                <span class="step-number">1</span>
+                <strong>Start with a Cube</strong><br>
+                • Add a <strong>Cube</strong> to the scene<br>
+                • Press <span class="key">Tab</span> to enter Edit Mode<br>
+                • You'll see the cube's vertices highlighted
+            </div>
+            
+            <div class="step">
+                <span class="step-number">2</span>
+                <strong>Shape the Blade</strong><br>
+                • Press <span class="key">F</span> to switch to Face selection mode<br>
+                • Click the top face to select it<br>
+                • Press <span class="key">R</span> and scale it smaller (this will be the blade tip)<br>
+                • Press <span class="key">G</span> to extrude upward - move mouse up and click to confirm
+            </div>
+            
+            <div class="step">
+                <span class="step-number">3</span>
+                <strong>Create the Handle</strong><br>
+                • Select the bottom face<br>
+                • Press <span class="key">G</span> to extrude downward<br>
+                • Press <span class="key">R</span> to scale it thinner (handle should be narrower than blade)<br>
+                • Extrude again for the pommel (bottom grip)
+            </div>
+            
+            <div class="step">
+                <span class="step-number">4</span>
+                <strong>Add the Crossguard</strong><br>
+                • Press <span class="key">Tab</span> to exit Edit Mode<br>
+                • Add a new <strong>Cube</strong><br>
+                • Scale it flat and wide<br>
+                • Position it between the blade and handle
+            </div>
+            
+            <div class="step">
+                <span class="step-number">5</span>
+                <strong>Apply Materials</strong><br>
+                • Select the blade, apply <strong>Metal</strong> material<br>
+                • Select the handle, apply <strong>Wood</strong> or <strong>Rubber</strong><br>
+                • Select the crossguard, apply <strong>Metal</strong>
+            </div>
+            
+            <div class="tip">
+                <strong>Pro Tip:</strong> Press <span class="key">Z</span> to toggle PBR mode and see your metallic materials shine!
+            </div>
+        </div>
+        
+        <h2 id="crate">Textured Wooden Crate</h2>
+        <span class="difficulty intermediate">INTERMEDIATE</span>
+        
+        <div class="tutorial-card">
+            <h3>Tutorial 4: Create a Textured Crate</h3>
+            <p><strong>Time:</strong> 15 minutes | <strong>Goal:</strong> Learn texture mapping and PBR materials</p>
+            
+            <div class="step">
+                <span class="step-number">1</span>
+                <strong>Model the Crate</strong><br>
+                • Add a <strong>Cube</strong><br>
+                • Press <span class="key">Tab</span> for Edit Mode<br>
+                • Press <span class="key">S</span> to subdivide all faces once (adds detail)<br>
+                • Press <span class="key">I</span> to inset the faces slightly (creates panel look)
+            </div>
+            
+            <div class="step">
+                <span class="step-number">2</span>
+                <strong>Add Edge Details</strong><br>
+                • Press <span class="key">F</span> to switch to Edge mode<br>
+                • Hold <span class="key">Alt</span> and click an edge to select the loop<br>
+                • Press <span class="key">B</span> to bevel the edges (rounds them off)<br>
+                • This makes the crate look more realistic
+            </div>
+            
+            <div class="step">
+                <span class="step-number">3</span>
+                <strong>Exit and Apply Base Material</strong><br>
+                • Press <span class="key">Tab</span> to exit Edit Mode<br>
+                • Open the Material Editor<br>
+                • Choose <strong>Wood</strong> preset as a starting point
+            </div>
+            
+            <div class="step">
+                <span class="step-number">4</span>
+                <strong>Load Textures</strong><br>
+                • In the TEXTURES section, click <strong>Load Albedo</strong><br>
+                • Browse to a wood texture image (PNG/JPG)<br>
+                • Optionally load Normal and Roughness maps<br>
+                • The texture will appear on your crate immediately
+            </div>
+            
+            <div class="step">
+                <span class="step-number">5</span>
+                <strong>Adjust PBR Values</strong><br>
+                • Set Roughness to 0.7-0.8 (wood is not shiny)<br>
+                • Set Metallic to 0.0 (wood is not metal)<br>
+                • Adjust Base Color tint if needed<br>
+                • Click <strong>Apply</strong>
+            </div>
+            
+            <div class="note">
+                <strong>Note:</strong> If you don't have textures, you can find free PBR textures at sites like Poly Haven or Texture Haven.
+            </div>
+        </div>
+        
+        <h2 id="character">Character Modeling Basics</h2>
+        <span class="difficulty advanced">ADVANCED</span>
+        
+        <div class="tutorial-card">
+            <h3>Tutorial 5: Simple Low-Poly Character</h3>
+            <p><strong>Time:</strong> 30 minutes | <strong>Goal:</strong> Learn organic modeling with soft selection</p>
+            
+            <div class="step">
+                <span class="step-number">1</span>
+                <strong>Start with Body</strong><br>
+                • Add a <strong>Cube</strong> for the torso<br>
+                • Scale it taller than wide<br>
+                • Add another cube for the head, position above torso<br>
+                • Scale the head smaller
+            </div>
+            
+            <div class="step">
+                <span class="step-number">2</span>
+                <strong>Add Limbs</strong><br>
+                • Add cubes for arms (2) and legs (2)<br>
+                • Scale them long and thin<br>
+                • Position them at shoulders and hips<br>
+                • Add small cubes for hands and feet
+            </div>
+            
+            <div class="step">
+                <span class="step-number">3</span>
+                <strong>Smooth with Soft Selection</strong><br>
+                • Select the torso and enter Edit Mode<br>
+                • In Properties panel, enable <strong>Soft Selection</strong><br>
+                • Set radius to 2.0<br>
+                • Move vertices to create organic curves<br>
+                • Nearby vertices will move smoothly with falloff
+            </div>
+            
+            <div class="step">
+                <span class="step-number">4</span>
+                <strong>Add Details</strong><br>
+                • Use <span class="key">S</span> to subdivide faces for more detail<br>
+                • Use <span class="key">G</span> to extrude facial features<br>
+                • Use <span class="key">I</span> to inset for clothing details<br>
+                • Keep it low-poly for game performance
+            </div>
+            
+            <div class="step">
+                <span class="step-number">5</span>
+                <strong>Apply Materials</strong><br>
+                • Skin: Base Color (peach/brown), Roughness 0.5<br>
+                • Clothing: Choose colors, Roughness 0.7<br>
+                • Hair: Dark color, Roughness 0.3
+            </div>
+            
+            <div class="tip">
+                <strong>Pro Tip:</strong> For game characters, aim for 500-2000 triangles. Use the Properties panel to check your poly count!
+            </div>
+        </div>
+        
+        <h2 id="materials">Mastering PBR Materials</h2>
+        <span class="difficulty intermediate">INTERMEDIATE</span>
+        
+        <div class="tutorial-card">
+            <h3>Tutorial 6: Understanding PBR Workflow</h3>
+            <p><strong>Time:</strong> 15 minutes | <strong>Goal:</strong> Learn physically-based rendering principles</p>
+            
+            <h4>What is PBR?</h4>
+            <p>Physically-Based Rendering simulates how light interacts with real materials. It uses these key properties:</p>
+            
+            <div class="step">
+                <strong>Base Color (Albedo)</strong><br>
+                The raw color of the material without lighting. For metals, this should be a metallic color (gold, silver, copper). For non-metals, use any color but avoid pure white or black.
+            </div>
+            
+            <div class="step">
+                <strong>Metallic</strong><br>
+                • 0.0 = Non-metal (wood, plastic, skin, fabric)<br>
+                • 1.0 = Metal (iron, gold, chrome)<br>
+                • No in-between values in reality (but you can blend for artistic effect)
+            </div>
+            
+            <div class="step">
+                <strong>Roughness</strong><br>
+                • 0.0 = Perfect mirror (polished chrome)<br>
+                • 0.3 = Glossy (car paint, polished wood)<br>
+                • 0.7 = Matte (concrete, fabric)<br>
+                • 1.0 = Completely rough (chalk, rough stone)
+            </div>
+            
+            <div class="step">
+                <strong>Emissive</strong><br>
+                Makes materials glow. Use for:<br>
+                • Neon signs<br>
+                • LED lights<br>
+                • Glowing sci-fi elements<br>
+                • Magic effects
+            </div>
+            
+            <h4>Common Material Recipes</h4>
+            
+            <div class="step">
+                <strong>Polished Metal</strong><br>
+                Base Color: Metallic color (e.g., RGB 192, 192, 192 for steel)<br>
+                Metallic: 1.0<br>
+                Roughness: 0.2
+            </div>
+            
+            <div class="step">
+                <strong>Painted Plastic</strong><br>
+                Base Color: Any bright color<br>
+                Metallic: 0.0<br>
+                Roughness: 0.4
+            </div>
+            
+            <div class="step">
+                <strong>Rough Stone</strong><br>
+                Base Color: Grey/brown<br>
+                Metallic: 0.0<br>
+                Roughness: 0.9
+            </div>
+            
+            <div class="note">
+                <strong>Important:</strong> Press <span class="key">Z</span> to toggle PBR mode and see your materials render correctly. Solid mode won't show metallic/roughness properly!
+            </div>
+        </div>
+        
+        <h2 id="scripting">Procedural Generation with Lua</h2>
+        <span class="difficulty advanced">ADVANCED</span>
+        
+        <div class="tutorial-card">
+            <h3>Tutorial 7: Generate a Forest with Code</h3>
+            <p><strong>Time:</strong> 20 minutes | <strong>Goal:</strong> Learn Lua scripting for procedural content</p>
+            
+            <div class="step">
+                <span class="step-number">1</span>
+                <strong>Open Script Editor</strong><br>
+                Press <span class="key">Ctrl</span> + <span class="key">E</span> to open the Lua script editor panel.
+            </div>
+            
+            <div class="step">
+                <span class="step-number">2</span>
+                <strong>Create a Tree Function</strong><br>
+                Type this code:
+                <pre style="background: #0a0a0a; padding: 15px; border-radius: 5px; overflow-x: auto;">
+<code style="color: #e0e0e0;">-- Function to create a simple tree
+function createTree(x, z)
+    -- Trunk
+    local trunk = api:CreateCylinder(x, 1, z, 0.3, 2)
+    
+    -- Leaves (sphere on top)
+    local leaves = api:CreateSphere(x, 3, z, 1.5)
+end</code></pre>
+            </div>
+            
+            <div class="step">
+                <span class="step-number">3</span>
+                <strong>Generate a Forest</strong><br>
+                Add this code below:
+                <pre style="background: #0a0a0a; padding: 15px; border-radius: 5px; overflow-x: auto;">
+<code style="color: #e0e0e0;">-- Create a 10x10 forest with random spacing
+for i = 1, 50 do
+    local x = math.random(-20, 20)
+    local z = math.random(-20, 20)
+    createTree(x, z)
+end</code></pre>
+            </div>
+            
+            <div class="step">
+                <span class="step-number">4</span>
+                <strong>Run the Script</strong><br>
+                Click the <strong>Execute</strong> button. You'll see 50 trees appear randomly in your scene!
+            </div>
+            
+            <div class="step">
+                <span class="step-number">5</span>
+                <strong>Experiment</strong><br>
+                Try modifying:<br>
+                • Tree size: Change cylinder and sphere dimensions<br>
+                • Forest density: Change the loop count<br>
+                • Spacing: Adjust the random range<br>
+                • Add variation: Randomize tree heights
+            </div>
+            
+            <div class="tip">
+                <strong>Challenge:</strong> Add random rotation to each tree so they don't all face the same direction!
+            </div>
+        </div>
+        
+        <h2 id="export">Export to Game Engines</h2>
+        <span class="difficulty beginner">BEGINNER</span>
+        
+        <div class="tutorial-card">
+            <h3>Tutorial 8: Export to Unity/Unreal</h3>
+            <p><strong>Time:</strong> 10 minutes | <strong>Goal:</strong> Get your models into a game engine</p>
+            
+            <div class="step">
+                <span class="step-number">1</span>
+                <strong>Prepare Your Model</strong><br>
+                • Make sure materials are applied<br>
+                • Check poly count in Properties panel (keep it reasonable)<br>
+                • Position model at origin (0, 0, 0) for easy import<br>
+                • Apply any final transforms
+            </div>
+            
+            <div class="step">
+                <span class="step-number">2</span>
+                <strong>Export the Model</strong><br>
+                • Select your object in the Scene Hierarchy<br>
+                • Click <strong>Export</strong> in the menu bar<br>
+                • Choose <strong>OBJ</strong> format (universal compatibility)<br>
+                • Pick a save location and filename<br>
+                • Click Save
+            </div>
+            
+            <div class="step">
+                <span class="step-number">3</span>
+                <strong>What Gets Exported</strong><br>
+                FormnexoStudio exports:<br>
+                • .obj file (geometry, normals, UVs)<br>
+                • .mtl file (material properties)<br>
+                • PBR values (base color, metallic, roughness)
+            </div>
+            
+            <div class="step">
+                <span class="step-number">4</span>
+                <strong>Import to Unity</strong><br>
+                • Drag the .obj file into Unity's Assets folder<br>
+                • Unity will import the model and materials<br>
+                • Assign textures manually if needed<br>
+                • The model is ready to use in your game!
+            </div>
+            
+            <div class="step">
+                <span class="step-number">5</span>
+                <strong>Import to Unreal Engine</strong><br>
+                • In Content Browser, click Import<br>
+                • Select your .obj file<br>
+                • Unreal will create a Static Mesh<br>
+                • Create materials in Unreal using the PBR values from the .mtl file
+            </div>
+            
+            <div class="note">
+                <strong>Note:</strong> FBX and glTF export are coming soon! For now, OBJ works great for static meshes. For animated characters, export as FBX (currently exports as OBJ).
+            </div>
+        </div>
+        
+        <hr style="border: 1px solid #333; margin: 40px 0;">
+        
+        <div style="text-align: center;">
+            <h2>Keep Learning!</h2>
+            <p>These tutorials cover the basics. Experiment, break things, and have fun creating!</p>
+            <p style="margin-top: 20px;">
+                <a href="docs.html" style="background: #ff6600; color: #000; padding: 12px 24px; border-radius: 5px; text-decoration: none; font-weight: bold;">Read Full Documentation</a>
+            </p>
+        </div>
+        
+        <p style="text-align: center; color: #666; font-size: 12px; margin-top: 40px;">
+            © 2026 DABOOZ PRODUCTIONS - FormnexoStudio Tutorials v1.0
+        </p>
+    </div>
+</body>
+</html>
